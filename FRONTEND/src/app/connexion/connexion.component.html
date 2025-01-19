@@ -1,0 +1,17 @@
+
+<div *ngIf="user; else unlogged" >
+  <h3>Bonjour {{ user.nom }} - {{ user.prenom }}</h3>
+  <button (click)="deconnexion()">Deconnexion</button>
+
+</div>
+<ng-template #unlogged>
+<div>
+  <h3>Connexion</h3>
+<label for="login">Login : </label><input [(ngModel)]="login" /><br />
+<label for="password">Password : </label
+><input [(ngModel)]="password" type="password" /><br />
+<br />
+<button (click)="connexion()">Connexion</button>
+
+</div>
+</ng-template>
