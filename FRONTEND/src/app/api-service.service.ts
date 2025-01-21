@@ -102,14 +102,8 @@ export class ApiService {
   setLoginStatus(status: string) {
     this.authUserSubject.next(status);
   }
-  getToken(): string | null {
-    return localStorage.getItem('jwtToken');
-  }
-  setToken(token: string): void {
-    localStorage.setItem('jwtToken', token);
-  }
+
   logout(): void {
-    localStorage.removeItem('jwtToken');
     this.authUserSubject.next(undefined);
   }
 
@@ -122,12 +116,5 @@ export class ApiService {
     }
   }
 
-  public getUserFromToken(): string | null {
-    const token = this.getToken();
-    if (token) {
-      const decodedToken = this.decodeToken(token);
-      return decodedToken ? decodedToken.id : null;
-    }
-    return null;
-  }
+ 
 }

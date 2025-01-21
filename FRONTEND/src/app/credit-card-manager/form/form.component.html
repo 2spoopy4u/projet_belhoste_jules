@@ -1,0 +1,11 @@
+<br />
+<form [formGroup]="cardForm" (ngSubmit)="submit()">
+  <label>Nom: </label><input type="text" formControlName="Name" /><br />
+  <label>Code : </label><input type="text" formControlName="Code" />
+  <label>CCV : </label> <input maxlength="4" minlength="3" type="text" formControlName="CCV" /><br />
+  <label>Date d'expiration : </label><input maxlength="2" type="text" formControlName="ExpirationMonth" />/<input maxlength="4" type="text" formControlName="ExpirationYear" /><br />
+
+  <button type="submit" [disabled]="cardForm.status != 'VALID'">Inserer</button>
+</form>
+<br />
+Status du form : {{ cardForm.status }}

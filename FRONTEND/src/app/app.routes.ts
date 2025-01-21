@@ -5,6 +5,7 @@ import { CartComponent } from './cart/cart.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { FormComponent } from './form/form.component';
 import { UpdateUserFormComponent } from './update-user-form/update-user-form.component';
+import { CardManagerComponent } from './card-manager/card-manager.component';
 
 export const routes: Routes = [
     {path:'productList',component: ProductListComponent},
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path:'connexion',component: ConnexionComponent},
     {path:'add',component: FormComponent},
     {path:'update',component: UpdateUserFormComponent},
+    {path:'card',component: CardManagerComponent},
 
     {
         path: '**',

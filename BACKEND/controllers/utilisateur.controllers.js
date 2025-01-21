@@ -60,7 +60,7 @@ exports.login = (req, res) => {
 exports.addUser = (req, res) => {
   const utilisateur = {
     login: req.body.login,
-    password: req.body.password,
+    pass: req.body.password,
     nom: req.body.nom,
     prenom: req.body.prenom,
     mail: req.body.mail,

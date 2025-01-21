@@ -1,0 +1,48 @@
+<div>
+<table>
+    <thead>
+        <th>Nom</th>
+        <th>Code</th>
+        <th>CCV</th>
+        <th>Date</th>
+        <th></th>
+        <th></th>
+
+    </thead>
+    <tbody>
+        @for (card of cards(); track $index) {
+            <tr>
+                <td>{{card.Name}}</td>
+                <td>{{card.Code}}</td>
+                <td>{{card.CCV}}</td>
+                <td>{{card.ExpirationMonth}}/{{card.ExpirationYear}}</td>
+                <td><button (click)="selectCard(card.Code)" type="button">Modifier</button></td>
+                <td><button (click)="delete(card.Code)" type="button">Supprimer</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (selectedCard) {
+    <p>Modification de la carte : {{selectedCard.Code}}</p>
+<form [formGroup]="updateForm" (ngSubmit)="update()">
+    <div class="col-2">
+
+        <input formControlName="Name" [(ngModel)]="selectedCard.Name"  />
+    </div>
+    <div class="col-2">
+
+        <input readonly formControlName="Code" [(ngModel)]="selectedCard.Code"/>
+    </div>
+    <div class="col-2">
+        <input maxlength="4" minlength="3" formControlName="CCV" [(ngModel)]="selectedCard.CCV" />
+    </div>
+    <div class="col-2">
+        <input maxlength="2" formControlName="ExpirationMonth" [(ngModel)]="selectedCard.ExpirationMonth" />/<input maxlength="4" formControlName="ExpirationYear"
+        [(ngModel)]="selectedCard.ExpirationYear"/>
+    </div>
+    <div class="col-2">
+        <button type="submit" [disabled]="updateForm.status != 'VALID'" type="submit">Modifier</button>
+    </div>
+</form>
+}
+</div>

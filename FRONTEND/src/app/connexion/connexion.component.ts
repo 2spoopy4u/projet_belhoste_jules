@@ -21,7 +21,6 @@ export class ConnexionComponent {
 
   ngOnInit() {
     let userId = null;
-    userId = this.apiService.getUserFromToken();
     if(userId){
     this.apiService.getUser(userId).subscribe((c)=>{
       this.user = c;
@@ -34,7 +33,6 @@ export class ConnexionComponent {
       const token = response.headers.get('Authorization')?.split(' ')[1];
 
         if (token) {
-          this.apiService.setToken(token);
           this.user= response.body!;
           this.apiService.setLoginStatus(response.body!.id!);
           console.log('Login successful!');
